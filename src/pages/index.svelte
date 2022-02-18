@@ -72,9 +72,6 @@
         cols="30"
         rows="5"
         bind:value={postText}
-        on:keydown={(e) => {
-          if (e.key === "Enter") post(postsRef);
-        }}
       />
       <button on:click={post(postsRef)}> Post </button>
       <hr />

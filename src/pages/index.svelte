@@ -21,6 +21,9 @@
     if (!$username) {
       return;
     }
+    if (!postText.trim()) {
+      return; // no posting whitespace
+    }
     postsRef.add({
       username: $username,
       text: postText,
@@ -33,9 +36,14 @@
     if (!$username) {
       return;
     }
+    let commentText = document.getElementById(postID).value;
+    if (!commentText.trim()) {
+      document.getElementById(postID).value = "";
+      return; // no posting whitespace
+    }
     commentsRef.add({
       username: $username,
-      text: document.getElementById(postID).value,
+      text: commentText,
       createdAt: Date.now(),
     });
     document.getElementById(postID).value = "";

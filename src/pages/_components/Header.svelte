@@ -13,7 +13,10 @@
 
   const changeName = () => {
     let string = prompt("Enter your name:") ?? $username;
-    $username = string.substring(0, 25); // limit to 25 characters
+    string = string.trim();
+    if (string) {
+      $username = string.substring(0, 25); // limit to 25 characters
+    }
   };
 </script>
 

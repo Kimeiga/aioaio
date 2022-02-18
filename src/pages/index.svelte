@@ -18,6 +18,9 @@
   // let loggedIn = false;
 
   function post(postsRef) {
+    if (!$username) {
+      return;
+    }
     postsRef.add({
       username: $username,
       text: postText,
@@ -27,6 +30,9 @@
   }
 
   function comment(commentsRef, postID) {
+    if (!$username) {
+      return;
+    }
     commentsRef.add({
       username: $username,
       text: document.getElementById(postID).value,

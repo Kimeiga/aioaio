@@ -1,12 +1,19 @@
 <script>
+  import { onMount } from "svelte";
+
   // to discourage players from changing their name during the game
   // and causing bugs LMAO
   export let showChangeButton = true;
 
   import { username } from "../../store";
 
+  onMount(() => {
+    $username = $username.substring(0, 25);
+  });
+
   const changeName = () => {
-    $username = prompt("Enter your name:") ?? $username;
+    let string = prompt("Enter your name:") ?? $username;
+    $username = string.substring(0, 25); // limit to 25 characters
   };
 </script>
 
@@ -24,6 +31,9 @@
     {/if}
   {/if}
 </header>
+{#if !$username}
+  <p>Sign in at the top right first to post/comment.</p>
+{/if}
 
 <style>
   header {

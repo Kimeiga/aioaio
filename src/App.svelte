@@ -2,7 +2,7 @@
   import { Router } from "@roxi/routify";
   import { routes } from "../.routify/routes";
 
-  import { username } from "store.js";
+  import { username } from "./store.js";
   username.useLocalStorage();
 </script>
 

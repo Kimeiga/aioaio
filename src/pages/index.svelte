@@ -22,6 +22,7 @@
       return;
     }
     if (!postText.trim()) {
+      let postText;
       return; // no posting whitespace
     }
     postsRef.add({

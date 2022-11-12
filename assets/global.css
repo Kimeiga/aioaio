@@ -1,4 +1,4 @@
-html, body {
+/* html, body {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -68,7 +68,6 @@ button:focus {
 
 
 
-/* from app.svelte */
 	main {
 		text-align: center;
 		padding: 1em;
@@ -91,4 +90,12 @@ button:focus {
 		main {
 			max-width: none;
 		}
-	}
+	} */
+
+div.postBody p:first-child {
+	margin-top: 0.5rem;
+}
+
+div.postBody p:last-child {
+	margin-bottom: 0.5rem;
+}

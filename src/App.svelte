@@ -9,8 +9,12 @@
 <Router {routes} />
 
 <style global>
-  /* @import "../assets/global.css"; */
+  @import "../assets/global.css";
   body {
     margin: 0;
+  }
+
+  html {
+    font-family: sans-serif;
   }
 </style>

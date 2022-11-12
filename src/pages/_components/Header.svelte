@@ -33,10 +33,8 @@
       <button on:click={changeName}>Change</button>
     {/if}
   {/if}
+  
 </header>
-{#if !$username}
-  <p>Sign in at the top right first to post/comment.</p>
-{/if}
 
 <style>
   header {

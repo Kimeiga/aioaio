@@ -57,8 +57,12 @@
     ]
   },
   "dependencies": {
+    "@rollup/plugin-babel": "^6.0.2",
+    "entities": "^4.4.0",
     "firebase": "^8.2.4",
+    "sanitize-html": "^2.7.3",
     "svelte-inspect": "^0.1.2",
+    "svelte-markdown": "^0.2.3",
     "svelte-persistent-store": "^0.1.6",
     "sveltefire": "^0.1.5"
   }

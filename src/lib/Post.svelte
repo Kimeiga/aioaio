@@ -67,7 +67,9 @@
 		};
 
 		marked.use({ renderer });
-		html2 = marked.parse(DOMPurify.sanitize(post.text));
+		html2 = marked.parse(
+			DOMPurify.sanitize(post.text, { FORBID_TAGS: ["style"] })
+		);
 
 		// console.log(html);
 	});

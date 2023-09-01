@@ -1,8 +1,8 @@
 <script>
   export let name;
 
-  let bgColor = stringToColour(name);
-  let fgColor = pickTextColorBasedOnBgColorAdvanced(
+  $: bgColor = stringToColour(name);
+  $: fgColor = pickTextColorBasedOnBgColorAdvanced(
     bgColor,
     "#FFFFFF",
     "#000000"
@@ -42,5 +42,7 @@
   style="background:{bgColor}; flex-shrink: 0; width: 48px; height: 48px; display: inline-block;
               border-radius: 48px; display: flex; align-items: center; justify-content: center;"
 >
-  <span style="font-size: 24px; color: {fgColor}">{name.charAt(0)}</span>
+  <span style="font-size: 24px; color: {fgColor}"
+    >{name != null ? name.charAt(0) : "h"}</span
+  >
 </div>

@@ -89,6 +89,9 @@
 {/if}
 
 <style>
+	a {
+		text-decoration: none;
+	}
 	header {
 		position: sticky;
 		top: 0;

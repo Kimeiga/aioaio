@@ -2,6 +2,8 @@
   import ProfilePicture from "./lib/ProfilePicture.svelte";
   import { username, emoji, color } from "./store.js";
   import Header from "./lib/Header.svelte";
+  import EmojiPicker from "./lib/Emoji.svelte";
+
   // metatags.title = "aioaio";
   // metatags.description = "aioaio";
   import SvelteMarkdown from "svelte-markdown";
@@ -80,6 +82,14 @@
       orderBy("createdAt", "asc")
     );
   };
+
+  const onEmoji = (event) => {
+    // change the emoji to the new one selected
+    let emoji = event.detail.emoji;
+    console.log(event);
+    console.log(emoji);
+    postText = (postText ?? "") + emoji;
+  };
 </script>
 
 <main>
@@ -87,6 +97,7 @@
     <Header />
 
     <Collection ref={postsQuery} let:data={posts} let:ref={postsRef}>
+      <small>5000 character limit</small>
       <div id="post-box">
         <textarea
           name="post"
@@ -95,8 +106,16 @@
           rows="5"
           placeholder="What's on your mind?"
           bind:value={postText}
+          maxlength="5000"
         />
-        <button on:click={() => post(postsRef)}> Post </button>
+        <div style="display: flex; width: 100%;">
+          <EmojiPicker on:change={onEmoji} />
+          <button id="emojiTrigger">😀</button>
+
+          <button on:click={() => post(postsRef)} style="flex: 1;">
+            Post
+          </button>
+        </div>
       </div>
       <hr />
 

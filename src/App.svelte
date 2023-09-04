@@ -97,7 +97,6 @@
     <Header />
 
     <Collection ref={postsQuery} let:data={posts} let:ref={postsRef}>
-      <small>5000 character limit</small>
       <div id="post-box">
         <textarea
           name="post"
@@ -109,6 +108,9 @@
           maxlength="5000"
         />
         <div style="display: flex; width: 100%;">
+          <div style="margin: 0 0.5rem; display: grid; place-items: center;">
+            <span>{5000 - (postText?.length ?? 0)}</span>
+          </div>
           <EmojiPicker on:change={onEmoji} />
           <button id="emojiTrigger">😀</button>
 

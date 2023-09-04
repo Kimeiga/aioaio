@@ -33,6 +33,7 @@
 	import { onMount } from "svelte";
 	import { marked } from "marked";
 	import DOMPurify from "dompurify";
+	import { color } from "../store";
 
 	let html2;
 
@@ -78,7 +79,11 @@
 <!-- {#if post} -->
 <div style="padding: 0.5rem 0.5rem 0;">
 	<div style="display: flex; ">
-		<ProfilePictureEmoji name={post?.username} emoji={post?.emoji} />
+		<ProfilePictureEmoji
+			name={post?.username}
+			emoji={post?.emoji}
+			color={post?.color}
+		/>
 		<div style="margin-left: 10px;">
 			<div style="display: flex; gap: 2px;">
 				<b>{post?.username} </b>

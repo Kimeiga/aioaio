@@ -1570,6 +1570,30 @@ const emojis = [
 	"🏴",
 ];
 
+function generateRandomColor() {
+	/* Select a random number for R, G, and B between 0 and 255 */
+	var r = Math.floor(Math.random() * 256);
+	var g = Math.floor(Math.random() * 256);
+	var b = Math.floor(Math.random() * 256);
+	/* Convert those numbers into a single hex value as a string */
+	var hexR = r.toString(16);
+	var hexG = g.toString(16);
+	var hexB = b.toString(16);
+	/* Pad the strings so they're each 2 characters long */
+	if (hexR.length == 1) {
+		hexR = "0" + hexR;
+	}
+	if (hexG.length == 1) {
+		hexG = "0" + hexG;
+	}
+	if (hexB.length == 1) {
+		hexB = "0" + hexB;
+	}
+	/* Merge the three hex values together */
+	var hexColor = "#" + hexR + hexG + hexB;
+	return hexColor.toUpperCase();
+}
+
 function hashStringToNumber(s) {
 	var hash = 0;
 	for (var i = 0; i < s.length; i++) {
@@ -1607,11 +1631,14 @@ const createWritableStore = (key, startValue) => {
 }
 
 let usernameTemp = generateRandomString();
+let colorTemp = generateRandomColor();
 
 export const
 	username = createWritableStore('username', usernameTemp),
 	emoji = createWritableStore('emoji', assignEmoji(usernameTemp)),
+	color = createWritableStore('color', colorTemp),
 	autojoin = writable(false);
 
 username.useLocalStorage();
 emoji.useLocalStorage();
+color.useLocalStorage();

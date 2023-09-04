@@ -1,6 +1,6 @@
 <script>
   import ProfilePicture from "./lib/ProfilePicture.svelte";
-  import { username, emoji } from "./store.js";
+  import { username, emoji, color } from "./store.js";
   import Header from "./lib/Header.svelte";
   // metatags.title = "aioaio";
   // metatags.description = "aioaio";
@@ -30,6 +30,7 @@
     const docRef = await addDoc(collection(firestore, "posts"), {
       username: $username,
       emoji: $emoji,
+      color: $color,
       text: postText,
       createdAt: Date.now(),
     });
@@ -58,6 +59,7 @@
       {
         username: $username,
         emoji: $emoji,
+        color: $color,
         text: commentText,
         createdAt: Date.now(),
       }

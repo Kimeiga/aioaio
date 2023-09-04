@@ -11,7 +11,7 @@
 	// and causing bugs LMAO
 	export let showChangeButton = true;
 
-	import { username, emoji } from "../store";
+	import { username, emoji, color } from "../store";
 
 	const changeName = () => {
 		let string = prompt("Enter your name:") ?? $username;
@@ -56,6 +56,7 @@
 				><ProfilePictureEmoji
 					name={$username}
 					emoji={$emoji}
+					color={$color}
 					inline={true}
 				/><span>{$username} </span></button
 			>
@@ -76,11 +77,11 @@
 
 		<br />
 		<label for="color">Color</label>
-		<input id="color" type="color" />
+		<input id="color" type="color" bind:value={$color} />
 		<br />
 
 		<span style="float: left;">Preview</span>
-		<ProfilePictureEmoji name={$username} emoji={$emoji} />
+		<ProfilePictureEmoji name={$username} emoji={$emoji} color={$color} />
 		<button on:click={() => (shouldShowChangeProfileDialog = false)}>
 			Close
 		</button>

@@ -1,5 +1,6 @@
 <script>
 	export let name;
+	export let color;
 
 	$: bgColor = stringToColour(name);
 	$: fgColor = pickTextColorBasedOnBgColorAdvanced(
@@ -21,8 +22,13 @@
 		return colour;
 	}
 
-	function pickTextColorBasedOnBgColorAdvanced(bgColor, lightColor, darkColor) {
-		var color = bgColor.charAt(0) === "#" ? bgColor.substring(1, 7) : bgColor;
+	function pickTextColorBasedOnBgColorAdvanced(
+		bgColor,
+		lightColor,
+		darkColor
+	) {
+		var color =
+			bgColor.charAt(0) === "#" ? bgColor.substring(1, 7) : bgColor;
 		var r = parseInt(color.substring(0, 2), 16); // hexToR
 		var g = parseInt(color.substring(2, 4), 16); // hexToG
 		var b = parseInt(color.substring(4, 6), 16); // hexToB
@@ -39,7 +45,7 @@
 </script>
 
 <div
-	style="background:{bgColor}; flex-shrink: 0; width: 48px; height: 48px; display: inline-block;
+	style="background:{color}; flex-shrink: 0; width: 48px; height: 48px; display: inline-block;
               border-radius: 48px; display: flex; align-items: center; justify-content: center;"
 >
 	<span style="font-size: 24px; color: {fgColor}"

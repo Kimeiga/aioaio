@@ -69,7 +69,7 @@
 		<h1>Change Profile</h1>
 		<!-- show ui for changing name, color, emoji,  -->
 		<label for="name">Username</label>
-		<input id="name" bind:value={$username} type="text" />
+		<input id="name" bind:value={$username} type="text" maxlength="20" />
 		<br />
 		<label for="emoji">Emoji</label>
 		<EmojiPicker on:change={onEmoji} />

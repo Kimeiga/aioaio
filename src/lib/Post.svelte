@@ -42,10 +42,19 @@
 		const linkRenderer = renderer.link;
 		const imageRenderer = renderer.image;
 
+		function cleanVideoID(separator, id) {
+			let index = id.indexOf(separator) + separator.length;
+			if (index > id.length) return "";
+			if (id.length - index < 11) return "";
+			let videoID = id.substring(index, index + 11);
+			if (videoID.match(/^[a-zA-Z0-9_-]{11}$/) === null) return "";
+			return videoID.replace(/[^a-zA-Z0-9_-]/g, "");
+		}
+
 		renderer.link = (href, title, text) => {
 			let html = linkRenderer.call(renderer, href, title, text);
 			if (href.includes("youtube.com/watch?v=")) {
-				const videoId = href.split("v=")[1];
+				const videoId = cleanVideoID("v=", href);
 				html =
 					`<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" loading="lazy" ` +
 					`title="YouTube video player" frameborder="0" ` +

@@ -50,6 +50,7 @@
 			if (videoID.match(/^[a-zA-Z0-9_-]{11}$/) === null) return "";
 			return videoID.replace(/[^a-zA-Z0-9_-]/g, "");
 		}
+		aaa;
 
 		renderer.link = (href, title, text) => {
 			let html = linkRenderer.call(renderer, href, title, text);
@@ -61,7 +62,7 @@
 					`allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 			}
 			if (href.includes("youtube.com/embed/")) {
-				const videoId = href.split("embed/")[1];
+				const videoId = cleanVideoID("embed/", href);
 				html =
 					`<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" loading="lazy" ` +
 					`title="YouTube video player" frameborder="0" ` +

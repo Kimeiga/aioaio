@@ -50,7 +50,6 @@
 			if (videoID.match(/^[a-zA-Z0-9_-]{11}$/) === null) return "";
 			return videoID.replace(/[^a-zA-Z0-9_-]/g, "");
 		}
-		aaa;
 
 		renderer.link = (href, title, text) => {
 			let html = linkRenderer.call(renderer, href, title, text);

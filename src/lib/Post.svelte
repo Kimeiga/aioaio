@@ -1,7 +1,7 @@
 <script>
 	import ProfilePictureEmoji from "./ProfilePictureEmoji.svelte";
 	export let post;
-	import SvelteMarkdown from "svelte-markdown";
+	import DOMPurify from "dompurify";
 
 	function timeSince(date) {
 		var seconds = Math.floor((new Date().valueOf() - date) / 1000);
@@ -32,7 +32,6 @@
 
 	import { onMount } from "svelte";
 	import { marked } from "marked";
-	import DOMPurify from "dompurify";
 	import { color } from "../store";
 
 	let html2;
@@ -68,17 +67,20 @@
 					`allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 			} else if (/\.(jpeg|jpg|gif|png|webp|svg)$/i.test(href)) {
 				html = `<img src="${href}" alt="" style="max-width:100%; height:auto;">`;
+				html = DOMPurify.sanitize(html);
 			}
 			return html;
 		};
 
 		renderer.image = (href, title, text) => {
-			return `<img src="${href}" alt="${text}" style="max-width:100%; height:auto;">`;
+			return DOMPurify.sanitize(
+				`<img src="${href}" alt="${text}" style="max-width:100%; height:auto;">`,
+			);
 		};
 
 		marked.use({ renderer });
 		html2 = marked.parse(
-			DOMPurify.sanitize(post.text, { FORBID_TAGS: ["style"] })
+			DOMPurify.sanitize(post.text, { FORBID_TAGS: ["style"] }),
 		);
 
 		// console.log(html);
